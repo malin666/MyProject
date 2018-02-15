@@ -26,7 +26,7 @@ int getValueFromASM(){
     
 }
 void clearScreen(){
-    __asm("mov $a1, %02h");
+    __asm("mov a1, 02h");
 }
 
 int main(int argc, char** argv) {
