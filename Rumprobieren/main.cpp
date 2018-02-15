@@ -23,18 +23,21 @@ int getValueFromASM(){
     asm ("mov $35, %eax;");
     asm("add $5, %eax");
     asm("sar $1, %eax");
-    
+    asm("inc %eax");            
 }
-void clearScreen(){
+int HelloASM(){
+    asm("mov $len, %edx");
+}
+/*void clearScreen(){
     __asm("mov a1, 02h");
-}
+}*/
 
 int main(int argc, char** argv) {
     
     /*const char *msg = "Hello World!";
     
-    asm("mov $5, %eax");
-    cout << getValueFromASM() << endl;*/
+    asm("mov $5, %eax");*/
+    //cout << getValueFromASM() << endl;
     
     
     
