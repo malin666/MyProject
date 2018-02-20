@@ -33,6 +33,8 @@ Artikel::Artikel(long artikelNummer=0, string artikelBezeichnung="N/A", double v
 }
 
 Artikel::~Artikel() {
+    cout << "Deleting Artikel" << endl;
+    this->anzahlArtikel--;
 }
 
 void Artikel::setArtikel(long artikelNummer=0, string artikelBezeichnung="N/A", double verkaufsPreis=0.0){

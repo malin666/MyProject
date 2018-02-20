@@ -17,17 +17,24 @@
 
 using namespace std;
 
-Artikel art(1,"tet", 2);
-Artikel art1;
+Artikel artGlobal(1,"artGlobal", 1);
+
+void test(){
+    Artikel artTest1(2,"artTest1", 2);
+    Artikel artTest2(3, "artTest2", 3);
+    artGlobal.print();
+    artTest1.print();
+    artTest2.print();
+}
 
 /*
  * 
  */
 int main(int argc, char** argv) {
-    art.setArtikel(3.00,"etwas",5.0);
-    art.print();
-    art1.print();
     
+    Artikel artLocal;
+    test();
+    test();
     
     return 0;
 }
