@@ -297,6 +297,63 @@ cout << r1.getLaenge() << ", " << r1.getBreite() << endl;
  * mit dem Kopier-Konstruktor erfolgt die Zuweisung jedoch stets an ein bereits
  * existierendes Objekt.
  * 
+ * Standardmethoden kontrollieren
+ * C++11 ermoeglicht die explizite Aktivierung von Standardmethoden und die
+ * explizite Deaktivierung von Methoden. Dazu wird in der Deklaration einer Methode
+ * das Schluesselwort default bzw. das Schluesselwort delete verwendet.
  * 
  * 
+ * Standardmethoden aktivieren:
+ * Wenn eine Klasse einen Konstruktor mit Parametern definiert, erzeugt der
+ * Compiler wie gesagt nicht mehr automatisch einen Default-Konstruktor.
+ * Der Entwickler muss in diesem Fall einen solchen Default-Konstruktor
+ * selber definieren, wenn er zur Verfuegung stehen soll. Mit C++11 ist es 
+ * moeglich, den Compiler anzuweisen, die Standardversion einer Methode zu
+ * erzeugen. Dazu genuet es, in der Deklaration der Standardmethode
+ * am Ende die Auszeichnung =default; einzufuegen.
+ * Beispiel:
+ * tc()=default; weist den Compiler an, fuer die Klasse tc den Default-Konstruktor
+ * zu erzeugen.
+ * 
+ * Methoden deaktivieren:
+ * Der Compiler deaktiviert eine Methode, wenn sie mit der Auszeichnung
+ * =delete deklariert wird. Beispielweise ist es nicht immer sinnvoll,
+ * dass die Objekte einer Klasse kopierbar sind. Um das Kopieren von Objekten
+ * zu "verbieten", genuegt es, den Kopierkonstruktor auf =delete zu setzen und 
+ * damit zu deaktivieren. Identifiziert wird die jeweils zu deaktivierende
+ * Methode durch ihre Signatur. Der Kopier-Konstruktor besitzt zum Beispiel
+ * als Signatur eine Read-Only Referenz auf das Objekt, dass kopiert werden 
+ * soll. Die Deaktivierung des Kopier-Konstruktors einer Klasse mit dem
+ * klingenden Namen tc wuerde zum Beispiel wie folgt lauten:
+ * tc(const tc& src)=delete;
+ * Bemerkung: Alternativ kann natuerlich die Deklaration des Kopier-Konstruktors
+ * in den private-Bereich geschoben werden. Dann ist der ebenfalls deaktiviert.
+ * In diesem Zusammenhang ist es sinnvoll, neben dem Kopier-Konstruktor auch
+ * die Zuweisung zu deaktivieren. Die Zuweisung ist eine Funktion mit dem
+ * Namen operator=.
+ * 
+ * Methoden, die keine Standartmethoden sind, koennen ebenfalls deaktiviert
+ * werden (s. hierzu die Datei defaultDelete.cpp).
+ * 
+ * Zugriff auf das aktuelle Objekt
+ * Eine Elementfunktion kann auf jedes Element eines Objekts zugreifen, ohne 
+ * dass dabei konkret ein Objekt anzugeben ist. Sie arbeitet also stets
+ * mit dem Objekt, fuer das sie aufgerufen wurde bzw. von welchem Objekt genau
+ * sie aufgerufen wurde bzw. mit welchem Objekt sie im Moment arbeitet?
+ * Zur Loesung dieses Problems erhaelt die Funktion bei Ihrem Aufruf
+ * einen versteckten Zeiger vom aufrufenden Objekt, der auf das aufrufende
+ * Objekt zeigt. Diese Adresse steht in der aufgerufenen Funktion als
+ * konstanter Zeiger mit Namen this zur Verfuegung. Ist diesesObjekt der 
+ * Name des aufrufenden Objekts vom Typ tc, dann lautet die Deklaration
+ * von this wie folgt:
+ * tc * const this = &diesesObjekt;
+ * Der name this ist ein Schluesselwort. Da this ein konstanter Zeiger ist, 
+ * kann er selbst nicht versetzt werden. Der Zeiger this erlaubt also immer nur
+ * den Zugriff auf das aktuelle Objekt.
+ * 
+ * Zur Verwendung von this:
+ * Innerhalb einer Elementfunktion kann mit Hilfe des this-Zeigers ein
+ * Objekt wie folgt angesprochen werden:
+ * this->data;
+ * this->funct();
  */
