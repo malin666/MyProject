@@ -19,9 +19,10 @@
 class Artikel {
 public:
     Artikel();
-    Artikel(long, std::string, double);
+    Artikel(long, const std::string&, double);
     ~Artikel();
-    void setArtikel(long, std::string, double);
+    void init(void);
+    void setArtikel(long, const std::string&, double);
     void inline setArtikelNummer(long);
     void inline setArtikelBezeichnung(const std::string&);
     void inline setVerkaufsPreis(double);
@@ -39,4 +40,3 @@ private:
 };
 
 #endif /* ARTIKEL_H */
-

@@ -17,7 +17,8 @@
 
 using namespace std;
 
-//int anzahlArtikel = 0;
+
+
 Artikel::Artikel(){
     this->artikelNummer = 0;
     this->artikelBezeichnung = "N/A";
@@ -25,19 +26,32 @@ Artikel::Artikel(){
     this->anzahlArtikel++;
 }
 
-Artikel::Artikel(long artikelNummer=0, string artikelBezeichnung="N/A", double verkaufsPreis=0.0){
+Artikel::Artikel(long artikelNummer=0, const string &artikelBezeichnung="N/A", double verkaufsPreis=0.0){
+    if(verkaufsPreis<0.0)
+        verkaufsPreis=0.0;
+    
     this->artikelNummer = artikelNummer;
     this->artikelBezeichnung = artikelBezeichnung;
     this->verkaufsPreis = verkaufsPreis;
     this->anzahlArtikel++;
 }
 
-Artikel::~Artikel() {
-    cout << "Deleting Artikel" << endl;
-    this->anzahlArtikel--;
+void Artikel::init(){
+    this->anzahlArtikel = 0;
 }
 
-void Artikel::setArtikel(long artikelNummer=0, string artikelBezeichnung="N/A", double verkaufsPreis=0.0){
+Artikel::~Artikel() {
+    cout << "Deleting Artikel" << endl;
+    if(anzahlArtikel>0)
+    this->anzahlArtikel--;
+    
+    cout << "Remaining Artikel: " << anzahlArtikel;
+}
+
+void Artikel::setArtikel(long artikelNummer=0, const string &artikelBezeichnung="N/A", double verkaufsPreis=0.0){
+    if(verkaufsPreis<0.0)
+        verkaufsPreis = 0.0;
+    
     this->artikelNummer = artikelNummer;
     this->artikelBezeichnung = artikelBezeichnung;
     this->verkaufsPreis = verkaufsPreis;
@@ -75,11 +89,20 @@ int inline Artikel::getAnzahlArtikel(){
 }
 
 void Artikel::print(){
+    
+    char eingabe;
+    
     cout << "------------------------" << endl
             << "Nr. " << this->artikelNummer << endl
             << "Bez. " << this->artikelBezeichnung << endl
             << "Preis. " << this->verkaufsPreis << endl
             << "Anz. " << this->anzahlArtikel << endl
             << "----------------------" << endl;
+    
+    cout << "Press 'q' to Continue" << endl;
+    while(cin.get(eingabe)){
+        if(eingabe=='q')
+            break;
+    }
+    
 }
-

@@ -17,25 +17,36 @@
 
 using namespace std;
 
-Artikel artGlobal(1,"artGlobal", 1);
+Artikel art;
 
 void test(){
-    Artikel artTest1(2,"artTest1", 2);
-    Artikel artTest2(3, "artTest2", 3);
-    artGlobal.print();
-    artTest1.print();
-    artTest2.print();
+    art.setArtikel(5, "Artikel 2", 5);
+    art.print();
+    art.setArtikel(10, "Artikel 3", 10);
+    art.print();
+    cout << "--test() end--" << endl << endl << endl;
 }
+/*string eingabe(){
+    long nummer;
+    string name;
+    double preis;
+    cout << "give nr:" << endl; cin >> nummer;
+    cout << "give name:" << endl; cin >> name;
+    cout << "give preis:" << endl; cin >> preis;
+    art.setArtikel(nummer, name, preis);
+    art.print();
+    return "Artikel added";
+}*/
 
-/*
- * 
- */
 int main(int argc, char** argv) {
     
-    Artikel artLocal;
+    art.print();
+    
+    art.setArtikel(1, "Artikel 1", 1);
+    art.print();
     test();
     test();
+    //eingabe();
     
     return 0;
 }
-
