@@ -81,13 +81,13 @@ bool Datum::isLess(const Datum &datum) const{
 }
 
 const string& Datum::asString() const{
-    string datumString;
+    static string datumString;
     stringstream ss;
     ss << this->tag << "." << this->monat << "." << this->jahr;
     ss >> datumString;
-    cout << datumString << endl;
     
-    //return str;
+    
+    return datumString;
 }
 
 void Datum::print() const{

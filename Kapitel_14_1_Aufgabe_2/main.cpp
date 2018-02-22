@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
     datum.setDatum();
     
     
-    datum.asString();
+    cout << datum.asString() << endl;
     datum1.print();
     datum.print();
     datum.isEqual(datum1);
