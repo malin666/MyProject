@@ -18,23 +18,29 @@ struct tm *timeInfo;
 bool Game::run(){
     
     
-    
-    startTime = 0;
-    
+    time(&rawTime);
+    timeInfo = localtime(&rawTime);
+    startTime = mktime(timeInfo) ;
+    lastTime = 0;
     
     char key = ' ';
+    frameCount = 0;
     
     
     while(key != 'q'){
         
         while(!getInput(&key)){
+                                              
+            timerUpdate();
             time(&rawTime);
             timeInfo = localtime(&rawTime);
-            currentTime = timeInfo->tm_gmtoff;
-            long sec = (timeInfo->tm_year+1900)*8880 + timeInfo->tm_sec;
-            cout << sec << endl;
+            
         }
+        cout << frameCount / (mktime(timeInfo) - startTime) << " FPS" << endl;
+        cout << "what you pressed: " << key << endl;
+        cout << "frameCount: " << frameCount << endl;
     }
+    
     return true;
 }
 
@@ -42,7 +48,7 @@ bool Game::getInput(char *c){
     Kbhit kbhit;
     initscr();  //Init ncurses
     
-    if(kbhit.kbhit() == true){    
+    if(kbhit.kbhit()){    
         *c = getch();   //getch from ncurses
         endwin();
         return true;
@@ -50,7 +56,16 @@ bool Game::getInput(char *c){
     }
     endwin();
     return false;
+}
+
+void Game::timerUpdate(){
+    currentTime = mktime(timeInfo) - lastTime;
+    //cout << currentTime << endl;
+    /*if(currentTime < 33.33)
+        return;*/
     
+    frameCount++;
+    lastTime = mktime(timeInfo);
 }
 
 
