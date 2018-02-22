@@ -9,6 +9,10 @@ public:
 private:
     bool getInput(char *c);
     bool kbhit();
+    int currentTime;
+    int startTime;
+    int endTime;
+    int frames;
 };
 
 #endif /* GAME_H */

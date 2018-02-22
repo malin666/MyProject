@@ -18,6 +18,7 @@
 using namespace std;
 
 Artikel art;
+int anzahlArtikel;
 
 void test(){
     art.setArtikel(5, "Artikel 2", 5);

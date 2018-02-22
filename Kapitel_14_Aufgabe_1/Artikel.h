@@ -36,7 +36,7 @@ private:
     long artikelNummer;
     std::string artikelBezeichnung;
     double verkaufsPreis;
-    int anzahlArtikel;
+    //int anzahlArtikel;
 };
 
 #endif /* ARTIKEL_H */

@@ -17,13 +17,13 @@
 
 using namespace std;
 
-
+extern int anzahlArtikel;
 
 Artikel::Artikel(){
     this->artikelNummer = 0;
     this->artikelBezeichnung = "N/A";
     this->verkaufsPreis = 0.0;
-    this->anzahlArtikel++;
+    anzahlArtikel++;
 }
 
 Artikel::Artikel(long artikelNummer=0, const string &artikelBezeichnung="N/A", double verkaufsPreis=0.0){
@@ -33,17 +33,17 @@ Artikel::Artikel(long artikelNummer=0, const string &artikelBezeichnung="N/A", d
     this->artikelNummer = artikelNummer;
     this->artikelBezeichnung = artikelBezeichnung;
     this->verkaufsPreis = verkaufsPreis;
-    this->anzahlArtikel++;
+    anzahlArtikel++;
 }
 
 void Artikel::init(){
-    this->anzahlArtikel = 0;
+    anzahlArtikel = 0;
 }
 
 Artikel::~Artikel() {
     cout << "Deleting Artikel" << endl;
     if(anzahlArtikel>0)
-    this->anzahlArtikel--;
+    anzahlArtikel--;
     
     cout << "Remaining Artikel: " << anzahlArtikel;
 }
@@ -55,7 +55,7 @@ void Artikel::setArtikel(long artikelNummer=0, const string &artikelBezeichnung=
     this->artikelNummer = artikelNummer;
     this->artikelBezeichnung = artikelBezeichnung;
     this->verkaufsPreis = verkaufsPreis;
-    this->anzahlArtikel++;
+    anzahlArtikel++;
 }
 
 void inline Artikel::setArtikelNummer(long artikelNummer){
@@ -85,7 +85,7 @@ double inline Artikel::getVerkaufsPreis(){
 }
 
 int inline Artikel::getAnzahlArtikel(){
-    return this->anzahlArtikel;
+    return anzahlArtikel;
 }
 
 void Artikel::print(){
@@ -96,7 +96,7 @@ void Artikel::print(){
             << "Nr. " << this->artikelNummer << endl
             << "Bez. " << this->artikelBezeichnung << endl
             << "Preis. " << this->verkaufsPreis << endl
-            << "Anz. " << this->anzahlArtikel << endl
+            << "Anz. " << anzahlArtikel << endl
             << "----------------------" << endl;
     
     cout << "Press 'q' to Continue" << endl;
