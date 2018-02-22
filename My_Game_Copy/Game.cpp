@@ -10,7 +10,11 @@
 #include <ctime>
 #include <iostream>
 
+#define GAME_SPEED 33.33
+
 using namespace std;
+
+
 
 time_t rawTime;
 struct tm *timeInfo;
@@ -36,7 +40,7 @@ bool Game::run(){
             timeInfo = localtime(&rawTime);
             
         }
-        cout << frameCount / (mktime(timeInfo) - startTime) << " FPS" << endl;
+        cout << frameCount / ((mktime(timeInfo) - startTime)/1000) << " FPS" << endl;
         cout << "what you pressed: " << key << endl;
         cout << "frameCount: " << frameCount << endl;
     }
@@ -60,9 +64,9 @@ bool Game::getInput(char *c){
 
 void Game::timerUpdate(){
     currentTime = mktime(timeInfo) - lastTime;
-    //cout << currentTime << endl;
-    /*if(currentTime < 33.33)
-        return;*/
+    
+    if(currentTime < GAME_SPEED)
+        return;
     
     frameCount++;
     lastTime = mktime(timeInfo);
