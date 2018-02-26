@@ -86,7 +86,13 @@ int main(int argc, char** argv) {
      * III
      * 
      * Statische Elementfunktionen sind bei ihrem Aufruf an klein 
-     * Objekt
+     * Objekt der Klasse gebunden. Aus diesem Grund steht ihnen
+     * im Vergleich zu konventionellen Elementfunktionen
+     * der this-Zeiger nicht zur Verfuegung. Aus diesem Grund
+     * haben sie keinen Zugriff auf Datenelemente und Methoden,
+     * die nicht selber statisch sind.
+     * 
+     * 
      */
     
     return 0;
