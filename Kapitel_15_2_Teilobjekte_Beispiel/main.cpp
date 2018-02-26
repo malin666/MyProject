@@ -12,6 +12,7 @@
  */
 
 #include <cstdlib>
+#include <iostream>
 
 using namespace std;
 
@@ -34,13 +35,15 @@ public:
 };
 
 mami::mami(int iKindEins, int iKindZwei, int iKindDrei):kindEins(iKindEins), kindZwei(iKindZwei), kindDrei(iKindDrei){
-    
+    cout << kindEins << endl;
 }
 /*
  * 
  */
 int main(int argc, char** argv) {
-
+    
+    
+    
     return 0;
 }
 
