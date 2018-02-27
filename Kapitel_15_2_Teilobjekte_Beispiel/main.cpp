@@ -20,10 +20,15 @@ class kind{     //Teilklasse
 public:
     int i;
     kind(int);
+    int getKind();
 };
 
 kind::kind(int){
     this->i=i;
+}
+
+int kind::getKind(){
+    return i;
 }
 
 class mami{     //Oberklasse (Enthaelt 3x kind)
@@ -32,17 +37,18 @@ class mami{     //Oberklasse (Enthaelt 3x kind)
     const kind kindDrei;
 public:
     mami(int, int, int);
+    
 };
 
 mami::mami(int iKindEins, int iKindZwei, int iKindDrei):kindEins(iKindEins), kindZwei(iKindZwei), kindDrei(iKindDrei){
-    cout << kindEins << endl;
+    cout << iKindEins << endl;
 }
 /*
  * 
  */
 int main(int argc, char** argv) {
     
-    
+    mami mama(1,2,3);
     
     return 0;
 }
