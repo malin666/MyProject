@@ -33,11 +33,13 @@ int main(int argc, char** argv) {
     mitglied.print();
     
     Mitglied mitglied2("Dupa", 1, 5, 10, 1534);
-    //mitglied2.setGeb(dtm);
-    if(mitglied2.getNummer()==1534)
-        mitglied2.print();
-    
     mitglied2.print();
+    Mitglied *ptr = &mitglied;
+    mitglied2.setVorstand(ptr);
+    if(ptr->getNummer()==mitglied.getNummer())
+        ptr->print();
+    
+    
     //Mitglied *ptr = &mitglied;
     
     
