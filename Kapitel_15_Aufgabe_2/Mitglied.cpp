@@ -18,7 +18,7 @@ using namespace std;
 
 
 
-Mitglied* Mitglied::ptrVorstand;
+Mitglied *Mitglied::ptrVorstand;
 
 Mitglied::Mitglied() {
 }
